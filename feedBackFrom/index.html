@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Gaurav Mate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            background-image: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        /* Overlay effect to improve text readability */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #ffdd57;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #f7f7f7;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #ffdd57;
+            font-size: 16px;
+        }
+
+        .form-container h2 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffdd57;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #f7f7f7;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #ffdd57;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffdd57;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffc107;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gaurav Mate</h1>
+            <p>Web Developer</p>
+            <div class="social-icons">
+                <a href="mailto:gmate7292@gmail.com">gmate7292@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Contact Me</h2>
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="b83c5b86-d6bf-4db8-bde2-0306c84c4b79">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+                <label for="email">Your Email *</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Gaurav Mate</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    access_key: "b83c5b86-d6bf-4db8-bde2-0306c84c4b79",
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    message: document.getElementById("message").value
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Your message has been submitted successfully!");
+                } else {
+                    alert("There was a problem submitting your message.");
+                }
+            })
+            .catch(error => {
+                alert("An error occurred: " + error.message);
+            });
+        });
+    </script>
+</body>
+</html>
